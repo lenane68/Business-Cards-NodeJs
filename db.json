@@ -1,0 +1,160 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@example.com",
+      "password": "Admin123!",
+      "role": "admin",
+      "biz": true,
+      "favorites": [
+        "eba2",
+        "10f2"
+      ],
+      "first": "Admin",
+      "last": "adm",
+      "phone": "0502020202",
+      "image": "https://www.sfdcpoint.com/wp-content/uploads/2019/01/Salesforce-Admin-Interview-questions.png",
+      "alt": "",
+      "city": "Ako",
+      "street": "Ako",
+      "houseNumber": "1",
+      "zip": ""
+    },
+    {
+      "id": "2",
+      "email": "biz@example.com",
+      "password": "Biz123!",
+      "role": "business",
+      "biz": true
+    },
+    {
+      "id": "3",
+      "email": "user@example.com",
+      "password": "User123!",
+      "role": "regular",
+      "favorites": [
+        "eba2"
+      ]
+    },
+    {
+      "id": "77a3",
+      "first": "Lina",
+      "middle": "",
+      "last": "Dabbah",
+      "phone": "0546353123",
+      "email": "lena.mhamed@hotmail.com",
+      "password": "Lena1234!",
+      "image": "",
+      "alt": "",
+      "state": "",
+      "country": "Israel",
+      "city": "Dier Al-Assad",
+      "street": "Aljabal",
+      "houseNumber": "1",
+      "zip": "2018800",
+      "biz": true,
+      "role": "biz",
+      "favorites": [
+        "79cb"
+      ]
+    },
+    {
+      "id": "27d8",
+      "first": "Example",
+      "middle": "",
+      "last": "Two",
+      "phone": "058493902",
+      "email": "Example2@example.com",
+      "password": "Example1234!",
+      "image": "",
+      "alt": "",
+      "state": "",
+      "country": "Israel",
+      "city": "Tel Aviv",
+      "street": "Dizengoff",
+      "houseNumber": "101",
+      "zip": "61000",
+      "biz": true,
+      "role": "biz",
+      "favorites": [
+        "79cb"
+      ]
+    },
+    {
+      "id": "7d7e",
+      "first": "Example",
+      "middle": "",
+      "last": "Tree",
+      "phone": "0547383921",
+      "email": "example3@example.com",
+      "password": "Example1234!",
+      "image": "",
+      "alt": "",
+      "state": "",
+      "country": "Israel",
+      "city": "Tel Aviv",
+      "street": "Dizengoff",
+      "houseNumber": "22",
+      "zip": "61000",
+      "biz": false,
+      "role": "regular",
+      "favorites": []
+    }
+  ],
+  "cards": [
+    {
+      "id": "eba2",
+      "state": "Tel Aviv",
+      "zip": "61000",
+      "houseNumber": 101,
+      "street": "Dizengoff",
+      "city": "Tel Aviv",
+      "country": "Israel",
+      "alt": "Coffee shop",
+      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+      "web": "https://coffeetime.com",
+      "email": "info@coffeetime.com",
+      "phone": "0523456789",
+      "description": "A cozy place to enjoy freshly brewed coffee and pastries.",
+      "subtitle": "Fresh coffee every morning",
+      "title": "Coffee Time",
+      "userEmail": "admin@example.com"
+    },
+    {
+      "id": "79cb",
+      "state": "",
+      "zip": "34567",
+      "houseNumber": 20,
+      "street": "Herzl",
+      "city": "Haifa",
+      "country": "Israel",
+      "alt": "Gym interior",
+      "image": "https://images.unsplash.com/photo-1599058917212-d750089bc07e",
+      "web": "https://fitzone.co.il",
+      "email": "contact@fitzone.co.il",
+      "phone": "0501234567",
+      "description": "Premium fitness center offering personal training and modern equipment.",
+      "subtitle": "Stronger every day",
+      "title": "FitZone Gym",
+      "userEmail": "Example2@example.com"
+    },
+    {
+      "id": "10f2",
+      "state": "",
+      "zip": "91000",
+      "houseNumber": 33,
+      "street": "Jaffa",
+      "city": "Jerusalem",
+      "country": "Israel",
+      "alt": "Laptop repair desk",
+      "image": "https://www.nextlab.co.il/wp-content/uploads/2015/02/laprip_fix.jpg",
+      "web": "https://techfix.co.il",
+      "email": "support@techfix.co.il",
+      "phone": "0533332222",
+      "description": "Reliable and fast repair services for laptops, PCs and mobile devices.",
+      "subtitle": "Computer Repair & IT Services",
+      "title": "TechFix",
+      "userEmail": "Example2@example.com"
+    }
+  ]
+}
