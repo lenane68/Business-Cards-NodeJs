@@ -5,6 +5,12 @@ const USER_KEY = "user";
 
 refreshToken();
 
+function refreshToken() {
+  const token = getJWT();
+  httpService.setAuthToken(token);
+}
+
+
 function createUser(user) {
   return httpService.post("/users", user);
 }
@@ -46,10 +52,6 @@ function logout() {
 function setToken(token) {
   localStorage.setItem(TOKEN_KEY, token);
   refreshToken();
-}
-
-function refreshToken() {
-  httpService.setDefaultCommonHeaders("x-auth-token", getJWT());
 }
 
 function getJWT() {

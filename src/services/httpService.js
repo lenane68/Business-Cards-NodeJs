@@ -2,40 +2,19 @@ import axios from "axios";
 import config from "../config.json";
 
 const instance = axios.create({
-  baseURL: config.apiUrl 
+  baseURL: config.apiUrl
 });
 
-function setDefaultCommonHeaders(headerName, headerValue) {
-  instance.defaults.headers.common[headerName] = headerValue;
+function setAuthToken(token) {
+  if (token) instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  else delete instance.defaults.headers.common["Authorization"];
 }
 
-function get(url) {
-  return instance.get(url);
-}
-
-function post(url, data) {
-  return instance.post(url, data);
-}
-
-function put(url, data) {
-  return instance.put(url, data);
-}
-
-function patch(url, data) {
-  return instance.patch(url, data);
-}
-
-function remove(url) {
-  return instance.delete(url);
-}
-
-const httpService = {
-  get,
-  post,
-  put,
-  patch,
-  delete: remove,
-  setDefaultCommonHeaders,
+export default {
+  get: (url) => instance.get(url),
+  post: (url, data) => instance.post(url, data),
+  put: (url, data) => instance.put(url, data),
+  patch: (url, data) => instance.patch(url, data),
+  delete: (url) => instance.delete(url),
+  setAuthToken
 };
-
-export default httpService;

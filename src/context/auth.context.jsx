@@ -1,70 +1,34 @@
-import { createContext, useContext, useState } from "react";
-import usersService from "../services/usersService";
+import { createContext, useContext, useState, useEffect } from "react";
 import httpService from "../services/httpService";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(usersService.getLoggedInUser());
-
-  const createUser = async (userData) => {
-    const { data: users } = await httpService.get("/users");
-
-    const exists = users.find((u) => u.email === userData.email);
-    if (exists) {
-      throw { response: { status: 400, data: "User already registered." } };
+  const [user, setUser] = useState(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      httpService.setAuthToken(token);
+      return { token };
     }
+    return null;
+  });
 
-    const newUser = { ...userData, favorites: [] };
-    await httpService.post("/users", newUser);
-  };
-
-  const updateUser = async (id, updatedData) => {
-    const updatedUser = { ...user, ...updatedData };
-    await usersService.updateUser(id, updatedData);
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-    setUser(updatedUser);
-
-    return { success: true, message: "Profile updated successfully!" };
-  };
-
-  const login = async (credentials) => {
-    const { data: users } = await httpService.get("/users");
-
-    const loggedUser = users.find(
-      (u) =>
-        u.email.toLowerCase() === credentials.email.toLowerCase() &&
-        u.password === credentials.password.trim()
-    );
-
-    if (!loggedUser) throw new Error("Invalid credentials");
-
-    localStorage.setItem("user", JSON.stringify(loggedUser));
-    setUser(loggedUser);
+  const login = async ({ email, password }) => {
+    const { data } = await httpService.post("/auth", { email, password });
+    const token = data.token;
+    localStorage.setItem("token", token);
+    httpService.setAuthToken(token);
+    setUser({ token });
   };
 
   const logout = () => {
-    usersService.logout();
+    localStorage.removeItem("token");
+    httpService.setAuthToken(null);
     setUser(null);
   };
 
-  const updateUserFavorites = (favorites) => {
-    const updatedUser = { ...user, favorites };
-    setUser(updatedUser);
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-  };
-
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        createUser,
-        login,
-        logout,
-        updateUserFavorites,
-        updateUser,
-      }}
-    >
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
